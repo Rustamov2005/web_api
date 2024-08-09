@@ -26,20 +26,6 @@ router.register(r'books', BookViewSet)
 router.register(r'genres', GenreViewSet)
 
 
-schema_view = get_schema_view(
-    openapi.Info(
-        title="API Documentation",
-        default_version='v1',
-        description="API Documentation",
-        terms_of_service="https://www.google.com/policies/terms/",
-        contact=openapi.Contact(email="<EMAIL>"),
-        license=openapi.License(name="BSD License"),
-    ),
-    public=True,
-    permission_classes=(permissions.AllowAny,),
-)
-
-
 urlpatterns = [
     path('', include(router.urls)),
     path('swagger/', login_required(schema_view.with_ui('swagger', cache_timeout=0)), name='schema-swagger-ui'),
